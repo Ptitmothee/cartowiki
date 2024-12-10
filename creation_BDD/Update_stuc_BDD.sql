@@ -1,3 +1,4 @@
+CREATE EXTENSION postgis;
 
 CREATE SEQUENCE public.utilisateurs_id_utilisateur_seq;
 
@@ -47,7 +48,7 @@ CREATE TABLE public.geometrie_pays (
                 id_entite_pays INTEGER NOT NULL,
                 date_debut SMALLINT DEFAULT -30000 NOT NULL,
                 date_fin SMALLINT DEFAULT -30000 NOT NULL,
-                geometry STRUCT NOT NULL,
+                geometry GEOMETRY NOT NULL,
                 id_modif INTEGER,
                 crc_geometrie_pays INTEGER DEFAULT 0 NOT NULL,
                 CONSTRAINT geometrie_pays_pk PRIMARY KEY (id_geometrie_pays)
@@ -64,7 +65,7 @@ CREATE SEQUENCE public.entites_villes_id_entite_ville_seq;
 
 CREATE TABLE public.entites_villes (
                 id_entite_ville INTEGER NOT NULL DEFAULT nextval('public.entites_villes_id_entite_ville_seq'),
-                position_ville STRUCT NOT NULL,
+                position_ville GEOMETRY NOT NULL,
                 crc_entites_villes INTEGER NOT NULL,
                 CONSTRAINT entites_villes_pk PRIMARY KEY (id_entite_ville)
 );
